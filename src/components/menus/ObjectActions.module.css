@@ -1,0 +1,8 @@
+.root { position: relative; flex: none; }
+.root > button { width: 36px; min-height: 36px; padding: 7px; }
+.menu { position: absolute; top: calc(100% + 7px); right: 0; z-index: 45; width: max-content; min-width: 190px; max-width: min(320px, calc(100vw - 32px)); padding: 6px; background: var(--ui-surface); border: 1px solid var(--ui-border); border-radius: 8px; box-shadow: 0 10px 30px #1723381f; }
+.menu > button { display: block; width: 100%; border: 0; text-align: left; background: transparent; border-radius: 5px; min-height: 36px; padding: 8px 11px; font-size: 13px; color: var(--ui-text); }
+.menu > button:hover, .menu > button:focus-visible { background: var(--ui-surface-hover); outline-offset: -2px; }
+.menu > .danger { color: var(--ui-danger, #a13730); }
+.menu > .dangerStart { border-top: 1px solid var(--ui-border); border-radius: 0 0 5px 5px; margin-top: 5px; padding-top: 12px; }
+@media(max-width:650px) { .root > button, .menu > button { min-height: 42px; } }

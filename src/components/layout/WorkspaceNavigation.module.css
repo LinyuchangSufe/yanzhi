@@ -1,0 +1,46 @@
+.sidebar, .drawerBody {
+  width: 224px;
+  min-height: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--ui-surface-subtle);
+  padding: 16px 12px 12px;
+  color: var(--ui-text-secondary);
+}
+.sidebar { border-right: 1px solid var(--ui-border); }
+.sidebar[hidden], .recent[hidden] { display: none; }
+.brandRow { display: flex; justify-content: space-between; align-items: center; min-height: 36px; }
+:global(.kb-shell) .brandRow .brand { border: 0; background: transparent; gap: 11px; padding: 5px 9px; font-size: 21px; font-weight: 650; letter-spacing: .6px; }
+:global(.kb-shell) .icon { min-width: 34px; min-height: 34px; padding: 7px; border: 0; background: transparent; color: var(--ui-text-muted); }
+.primaryNav, .recent { display: flex; flex-direction: column; gap: 4px; }
+:global(.kb-shell) .primaryNav button, :global(.kb-shell) .recent button, :global(.kb-shell) .utilityTrigger {
+  width: 100%; min-height: 40px; justify-content: flex-start; border: 0; background: transparent; padding: 9px 11px; gap: 11px; font-size: 14px; text-align: left; color: var(--ui-text-secondary);
+}
+.primaryNav button > span, .utilityTrigger > span { flex: 1; }
+.primaryNav small, .utilityPanel small { margin-left: auto; color: var(--ui-text-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+:global(.kb-shell) button.active { background: var(--ui-accent-soft); color: var(--ui-accent); font-weight: 550; }
+.recentHeading { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+:global(.kb-shell) .recentHeading > button:first-child { background: transparent; border: 0; color: var(--ui-text-muted); font-size: 12px; padding: 7px 10px; }
+.collapsedChevron { transform: rotate(-90deg); }
+.recent { flex: 1; min-height: 0; overflow: auto; margin-top: -13px; }
+:global(.kb-shell) .recent button { font-size: 13px; min-height: 37px; line-height: 1.5; }
+.recent button > span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dot { width: 5px; height: 5px; border-radius: 50%; background: #a5adba; flex-shrink: 0; }
+.recent p { color: var(--ui-text-muted); font-size: 13px; line-height: 1.7; padding: 0 10px; }
+.utilities { margin-top: auto; position: relative; padding-top: 12px; border-top: 1px solid var(--ui-border); }
+.utilityPanel { position: absolute; bottom: calc(100% + 5px); left: 0; z-index: 45; width: 100%; padding: 6px; background: var(--ui-surface); border: 1px solid var(--ui-border); border-radius: 10px; box-shadow: 0 8px 32px #20273514; }
+:global(.kb-shell) .utilityPanel button { width: 100%; justify-content: flex-start; border: 0; background: transparent; min-height: 38px; padding: 8px; font-size: 13px; }
+.utilityPanel button > span:first-of-type { flex: 1; text-align: left; }
+.keyHint { margin-left: auto; font-size: 12px; color: var(--ui-text-muted); }
+.drawer { border: 0; padding: 0; margin: 0; inset: 0 auto 0 0; width: min(300px, calc(100vw - 48px)); height: 100dvh; max-height: 100dvh; max-width: none; background: transparent; overflow: visible; color: var(--ui-text); }
+.drawer::backdrop { background: #20273555; }
+.drawerBody { width: 100%; height: 100%; }
+@media (max-width: 1000px) and (min-width: 651px) { .sidebar { width: 196px; padding-inline: 8px; } }
+@media (max-width: 650px) {
+  .drawerBody { padding: 16px 12px; gap: 22px; }
+  :global(.kb-shell) .drawer button { min-height: 44px; }
+  :global(.kb-shell) .primaryNav button { font-size: 15px; }
+  :global(.kb-shell) .recent button { font-size: 14px; }
+}

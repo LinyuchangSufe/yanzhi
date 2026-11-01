@@ -1,0 +1,17 @@
+.dialog { width: min(620px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); padding: 0; border: 1px solid var(--ui-border); border-radius: 12px; background: var(--ui-surface); color: var(--ui-text); box-shadow: 0 18px 60px #20273530; }
+.dialog::backdrop { background: #20273550; }
+.body { padding: 24px; }
+.body header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.body h2 { font-size: 20px; margin: 0; }
+.body header button { min-width: 34px; min-height: 34px; padding: 6px; background: transparent; border: 0; color: var(--ui-text-secondary); }
+.body p { font-size: 13px; color: var(--ui-text-secondary); line-height: 1.8; }
+.body dl { margin: 20px 0; }
+.body dl div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--ui-border); font-size: 13px; line-height: 1.6; }
+.body dd { margin: 0; }
+.body kbd { font: inherit; font-size: 12px; }
+@media (max-width: 550px) { .body { padding: 20px; } .body dl div { grid-template-columns: 1fr; gap: 6px; } }
+
+.connection { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; }
+.activityStack { position: fixed; right: 20px; bottom: 28px; z-index: 70; display: grid; gap: 8px; max-width: min(580px, calc(100vw - 32px)); max-height: min(50dvh, 420px); overflow: auto; }
+.activityStack > aside { position: static; width: auto; max-width: 100%; }
+@media (max-width: 650px) { .activityStack { right: 8px; bottom: 28px; max-width: calc(100vw - 16px); } }

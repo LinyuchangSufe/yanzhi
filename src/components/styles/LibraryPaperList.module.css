@@ -1,0 +1,28 @@
+.selectionBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 12px 18px;
+  background: var(--ui-accent-soft);
+  border-bottom: 1px solid var(--ui-border);
+  color: var(--ui-accent);
+  font-size: 13px;
+}
+.selectionBar strong { margin-right: 6px; font-weight: 550; }
+:global(.kb-shell) .selectionBar button { font-size: 12px; padding: 6px 10px; }
+:global(.kb-shell) .selectionBar .clear { margin-left: auto; border-color: transparent; background: transparent; }
+.listHeader { align-items: center; padding: 12px 64px 12px 18px; }
+.selectAll { display: inline-flex; align-items: center; gap: 26px; cursor: pointer; }
+.selectAll input,
+.rowSelect input { width: 15px; height: 15px; margin: 0; accent-color: var(--ui-accent); cursor: pointer; }
+.rowSelect { display: flex; align-items: center; padding: 16px 0 16px 18px; align-self: stretch; cursor: pointer; }
+.selectedRow { background: var(--ui-accent-soft); }
+.inReadingList { color: var(--ui-accent); }
+@media (max-width: 650px) {
+  .columnHint { display: none; }
+  .listHeader { padding-left: 12px; }
+  .rowSelect { padding-left: 12px; }
+  .selectionBar { padding: 9px 10px; gap: 5px; }
+  :global(.kb-shell) .selectionBar .clear { margin-left: 0; }
+}

@@ -1,0 +1,27 @@
+.activities {
+  position: fixed;
+  right: 20px;
+  bottom: 82px;
+  z-index: 60;
+  display: grid;
+  gap: 8px;
+  width: min(440px, calc(100vw - 32px));
+}
+.activity {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 13px;
+  color: var(--ui-text);
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgb(25 45 35 / 12%);
+}
+.info { flex: 1; min-width: 0; display: grid; gap: 3px; }
+.info strong { font-size: 12px; font-weight: 600; }
+.info span { font-size: 11px; color: var(--ui-text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.activity button { display: inline-flex; align-items: center; gap: 4px; padding: 6px 8px; font-size: 12px; white-space: nowrap; }
+.spin { color: var(--ui-accent); flex-shrink: 0; animation: spin 1.2s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spin { animation: none; } }

@@ -1,0 +1,23 @@
+{
+  "kind": "synthetic-test-fixture",
+  "generator": "scripts/make-fixture.mjs",
+  "sha256": "1b6d3191723c0ff5631ea3feb3bfe584b4d4f77443084c414f107055f6f959d7",
+  "physicalPages": 3,
+  "pageLabels": [
+    "i",
+    "1",
+    "2"
+  ],
+  "rotations": [
+    0,
+    0,
+    90
+  ],
+  "formulaRegionPdfCoordinates": {
+    "x": 70,
+    "y": 350,
+    "width": 460,
+    "height": 120
+  },
+  "metadataTime": "2026-10-28T00:00:00.000Z"
+}

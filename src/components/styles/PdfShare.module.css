@@ -1,0 +1,57 @@
+.dialog {
+  width: min(580px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  padding: 0;
+  border: 1px solid #dce4d5;
+  border-radius: 12px;
+  background: #fff;
+  color: #36443b;
+  box-shadow: 0 16px 60px #293b2733;
+  font: inherit;
+}
+.dialog::backdrop { background: #263b304d; }
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 23px;
+  border-bottom: 1px solid #e7ecdf;
+}
+.heading h2 { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 18px; }
+.dialog button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #dce4d5;
+  border-radius: 7px;
+  background: #fff;
+  color: #4e6652;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.dialog button:hover { background: #f0f5eb; }
+.dialog button:focus-visible, .files summary:focus-visible {
+  outline: 2px solid #75946a;
+  outline-offset: 3px;
+}
+.dialog .close { padding: 5px; border-color: transparent; }
+.body { padding: 20px 23px 23px; }
+.body p { margin: 0 0 14px; line-height: 1.7; font-size: 13px; }
+.status { display: flex; align-items: center; gap: 8px; color: #4c6b50; }
+.hint { color: #849278; }
+.privacy { color: #6b7967; }
+.path { margin: 17px 0; padding: 12px 14px; background: #f4f7ef; border-radius: 7px; }
+.path span { display: block; margin-bottom: 6px; color: #7c8c73; font-size: 11px; }
+.path code { font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; user-select: text; }
+.warning { color: #946b38; }
+.error { color: #a14f43; }
+.files { margin-top: 16px; font-size: 12px; color: #6b7967; }
+.files summary { cursor: pointer; }
+.files ul { max-height: 150px; overflow-y: auto; padding-left: 22px; line-height: 1.8; overflow-wrap: anywhere; }
+.actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px; margin-top: 21px; }
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spin { animation: none; } }

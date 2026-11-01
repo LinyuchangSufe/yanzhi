@@ -1,0 +1,136 @@
+.markdown {
+  color: var(--ui-text);
+  font-size: 15px;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  line-height: 1.5;
+  color: var(--ui-text);
+  margin: 1.5em 0 0.7em;
+}
+.markdown h1 {
+  font-size: 1.6em;
+}
+.markdown h2 {
+  font-size: 1.3em;
+}
+.markdown h3 {
+  font-size: 1.1em;
+}
+.markdown p {
+  margin: 0.6em 0 1em;
+}
+.markdown a {
+  color: var(--ui-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.markdown .paperReference {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--ui-accent);
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.markdown .paperReference:hover {
+  text-decoration-style: solid;
+  background: var(--ui-accent-soft);
+}
+.markdown .paperReference:focus-visible {
+  outline: 2px solid var(--ui-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.markdown blockquote {
+  border-left: 3px solid var(--ui-border);
+  margin: 1em 0;
+  padding: 0.2em 1em;
+  background: var(--ui-surface-subtle);
+  color: var(--ui-text-secondary);
+}
+.markdown code {
+  background: var(--ui-surface-subtle);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+.markdown pre {
+  overflow: auto;
+  padding: 15px;
+  background: var(--ui-surface-subtle);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+}
+.markdown pre code {
+  padding: 0;
+}
+.markdown table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.markdown td,
+.markdown th {
+  border: 1px solid var(--ui-border);
+  padding: 7px 10px;
+  text-align: left;
+}
+.markdown th {
+  background: var(--ui-surface-subtle);
+  font-weight: 600;
+}
+.markdown :global(.katex-display) {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}
+.markdown :global(.katex-error) {
+  color: #a24735;
+}
+.image {
+  display: block;
+  padding: 10px;
+  color: var(--ui-text-muted);
+  border: 1px dashed var(--ui-border);
+  font-size: 12px;
+}
+.localImage {
+  display: block;
+  margin: 14px 0;
+  max-width: 100%;
+}
+.localImage a {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+}
+.localImage img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 700px;
+  object-fit: contain;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+}
+.collectPaper {
+  display: inline;
+  margin: 0 3px 0 5px;
+  padding: 1px 5px;
+  min-height: 24px;
+  border: 1px solid var(--ui-border);
+  border-radius: 4px;
+  background: var(--ui-surface);
+  color: var(--ui-text-secondary);
+  font: inherit;
+  font-size: 11px;
+  vertical-align: baseline;
+  cursor: pointer;
+  user-select: none;
+}

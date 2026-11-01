@@ -1,0 +1,55 @@
+.library { max-width: 1200px; margin: 0 auto; padding: 26px 30px 36px; min-width: 0; }
+.pageHeading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 22px; }
+.pageHeading h1 { margin: 0; font-size: 24px; font-weight: 600; }
+.pageHeading h1 span { font-size: 14px; font-weight: 400; color: var(--ui-text-muted); margin-left: 10px; }
+.pageHeading p { margin: 8px 0 0; font-size: 13px; color: var(--ui-text-secondary); }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.objectList { border: 1px solid var(--ui-border); border-radius: var(--ui-radius); overflow: hidden; }
+.objectList:empty { display: none; }
+.objectList > button { display: flex; width: 100%; align-items: center; gap: 16px; padding: 20px; text-align: left; border: 0; border-bottom: 1px solid var(--ui-border); border-radius: 0; background: var(--ui-surface); }
+.objectList > button:hover { background: var(--ui-surface-subtle); }
+.objectList > button:last-child { border-bottom: 0; }
+.objectList > button > svg { flex-shrink: 0; color: var(--ui-text-muted); }
+.objectList > button > div { flex: 1; min-width: 0; }
+.objectList strong { font-size: 15px; font-weight: 550; overflow-wrap: anywhere; }
+.objectList p { margin: 7px 0; font-size: 13px; color: var(--ui-text-secondary); line-height: 1.65; overflow-wrap: anywhere; }
+.objectList small { font-size: 12px; color: var(--ui-text-muted); }
+.detailPage { width: 100%; max-width: 1000px; margin: 0 auto; padding: 28px 32px 48px; }
+.detailPage > h1 { margin: 0 0 18px; font-size: 24px; font-weight: 600; }
+.settingSection { max-width: none; margin: 20px 0; padding: 22px; border: 1px solid var(--ui-border); border-radius: var(--ui-radius); background: var(--ui-surface); }
+.settingSection h2 { margin: 0 0 14px; font-size: 16px; font-weight: 600; }
+.settingSection p { color: var(--ui-text-secondary); font-size: 13px; line-height: 1.8; }
+.sectionHeading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.sectionHeading h2 { margin-bottom: 0; }
+.sectionHeading > button { font-size: 12px; }
+.configuration { padding: 14px 0; }
+.configuration > p { margin: 5px 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.configuration strong { color: var(--ui-text); font-weight: 550; }
+.technical { margin: 16px 0 4px; color: var(--ui-text-secondary); font-size: 13px; }
+.technical summary { cursor: pointer; width: fit-content; padding: 5px 0; color: var(--ui-text-secondary); }
+.technical summary:focus-visible { outline: 2px solid var(--ui-focus); outline-offset: 3px; }
+.technical p { margin: 8px 0; }
+.technical pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+.configList { margin: 10px 0; }
+.configList > div { display: flex; gap: 18px; padding: 8px 0; border-bottom: 1px solid var(--ui-border); font-size: 12px; }
+.configList dt { min-width: 90px; color: var(--ui-text-muted); }
+.configList dd { min-width: 0; margin: 0; overflow-wrap: anywhere; color: var(--ui-text); }
+.aiSettings { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 14px; padding-top: 12px; }
+.aiSettings > label { display: flex; flex-direction: column; gap: 7px; min-width: 0; font-size: 13px; }
+.aiSettings > label:first-of-type { grid-column: 1 / -1; }
+.aiSettings input, .aiSettings select { width: 100%; min-width: 0; }
+.aiSettings > p, .aiSettings > .actions, .aiSettings > button { grid-column: 1 / -1; }
+.aiSettings > button { justify-self: start; min-height: 36px; }
+.aiSettings > p { margin: 0; }
+.restoreResult { margin-top: 16px; padding: 16px; background: var(--ui-accent-soft); border-radius: var(--ui-radius); font-size: 13px; overflow-wrap: anywhere; }
+.restoreResult > code { display: block; white-space: pre-wrap; overflow-wrap: anywhere; }
+.settingSection > .actions + .actions { margin-top: 12px; }
+@media (max-width: 650px) {
+  .library, .detailPage { padding: 20px 16px 32px; }
+  .pageHeading { gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+  .pageHeading h1, .detailPage > h1 { font-size: 22px; }
+  .objectList > button { padding: 16px 12px; gap: 10px; }
+  .settingSection { padding: 16px; }
+  .aiSettings { grid-template-columns: 1fr; }
+  .sectionHeading { flex-wrap: wrap; }
+}

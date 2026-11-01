@@ -1,0 +1,15 @@
+.topbar { height: 52px; min-height: 52px; padding: 0 20px; display: flex; align-items: center; gap: 14px; flex-shrink: 0; border-bottom: 1px solid var(--ui-border); background: var(--ui-bg); }
+.topbar[hidden] { display: none; }
+.contextLabel { flex: 1; min-width: 0; font-size: 13px; color: var(--ui-text-muted); white-space: nowrap; }
+.searchBox { width: min(440px, 52%); height: 36px; display: flex; align-items: center; gap: 9px; padding: 0 10px; border: 1px solid var(--ui-border); border-radius: 8px; background: var(--ui-surface); color: var(--ui-text-muted); }
+.searchBox:focus-within { border-color: var(--ui-focus); box-shadow: 0 0 0 2px var(--ui-accent-soft); }
+:global(.kb-shell) .searchBox input { flex: 1; width: 0; background: transparent; border: 0; padding: 0; outline: 0; font-size: 13px; }
+:global(.kb-shell) .searchBox button { border: 0; background: transparent; padding: 5px; min-width: 30px; min-height: 30px; }
+.searchHint { font: inherit; font-size: 11px; color: var(--ui-text-muted); white-space: nowrap; }
+.sidebarRail { width: 42px; flex-shrink: 0; background: var(--ui-surface-subtle); border-right: 1px solid var(--ui-border); padding: 7px 3px; }
+:global(.kb-shell) .sidebarRail button { border: 0; padding: 7px; background: transparent; color: var(--ui-text-muted); }
+.topbarRail { min-height: 38px; flex-shrink: 0; display: flex; align-items: center; border-bottom: 1px solid var(--ui-border); background: var(--ui-surface); padding: 0 12px; gap: 8px; }
+:global(.kb-shell) .topbarRail button { background: transparent; border: 0; color: var(--ui-text-secondary); font-size: 13px; }
+:global(.kb-shell) .mobileMenu { background: transparent; border: 0; color: var(--ui-text-secondary); min-width: 44px; min-height: 44px; padding: 9px; }
+@media (max-width: 850px) { .searchBox { width: min(370px, 65%); } }
+@media (max-width: 650px) { .topbar { height: 54px; min-height: 54px; padding: 0 9px; gap: 5px; } .contextLabel { display: none; } .searchBox { flex: 1; width: auto; height: 40px; } .searchHint { display: none; } :global(.kb-shell) .searchBox button { min-width: 36px; min-height: 36px; } }

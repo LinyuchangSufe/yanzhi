@@ -1,0 +1,9 @@
+.root { position: relative; display: inline-flex; margin-left: auto; }
+.root > button { display: inline-flex; gap: 6px; align-items: center; min-height: 34px; font-size: 13px; }
+.panel { position: absolute; top: calc(100% + 6px); right: 0; z-index: 45; width: min(340px, calc(100vw - 44px)); max-height: min(560px, 70dvh); overflow: auto; border: 1px solid var(--ui-border); border-radius: 7px; padding: 12px; background: var(--ui-surface); box-shadow: 0 7px 24px #15223a22; color: var(--ui-text); font-size: 13px; }
+.panel label { display: grid; gap: 6px; color: var(--ui-text-secondary); }
+.panel select { width: 100%; min-height: 34px; font: inherit; }
+.panel > button { display: flex; align-items: center; justify-content: flex-start; gap: 7px; width: 100%; margin: 5px 0; min-height: 34px; font-size: 13px; }
+.panel:focus-visible { outline: 2px solid var(--ui-focus); }
+.upward .panel { top: auto; bottom: calc(100% + 6px); }
+@media (pointer: coarse) { .root > button, .panel select, .panel > button { min-height: 44px; } }

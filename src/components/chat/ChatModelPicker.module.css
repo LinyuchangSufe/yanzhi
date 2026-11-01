@@ -1,0 +1,32 @@
+.picker { display: inline-flex; min-width: 0; max-width: 100%; }
+.picker .trigger { display: inline-flex; align-items: center; justify-content: space-between; gap: 5px; min-width: 0; max-width: 100%; min-height: 34px; border: 1px solid var(--ui-border); border-radius: 6px; padding: 6px 8px; color: var(--ui-text-secondary); background: var(--ui-surface); font-size: 12px; line-height: 1.4; cursor: pointer; }
+.picker .trigger:hover, .picker .trigger[aria-expanded="true"] { color: var(--ui-text); background: var(--ui-surface-hover); }
+.picker .trigger > svg { flex: none; }
+.modelName { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.menu { position: fixed; left: var(--chat-popover-left, 8px); top: var(--chat-popover-top, 8px); width: 350px; max-width: calc(100vw - 16px); max-height: var(--chat-popover-max-height, calc(100dvh - 16px)); z-index: 160; display: flex; flex-direction: column; min-height: 0; overflow: hidden; border: 1px solid var(--ui-border); border-radius: var(--ui-radius); color: var(--ui-text); background: var(--ui-surface); box-shadow: 0 8px 30px #17233824; visibility: hidden; font-size: 13px; line-height: 1.5; }
+.menu[data-positioned="true"] { visibility: visible; }
+.menuHeader { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex: none; padding: 12px 13px 10px; border-bottom: 1px solid var(--ui-border); }
+.menuHeader strong { font-size: 13px; font-weight: 600; }
+.menuHeader span { color: var(--ui-text-muted); font-size: 12px; }
+.menuBody { min-height: 0; overflow: auto; padding: 6px; overscroll-behavior: contain; }
+.catalog { display: grid; gap: 2px; }
+.menu .option { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; min-height: 36px; padding: 8px; border: 1px solid transparent; border-radius: 5px; background: transparent; color: var(--ui-text); text-align: left; font: inherit; cursor: pointer; }
+.menu .option > span { display: grid; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
+.menu .option strong { font-size: 13px; font-weight: 500; }
+.menu .option small { color: var(--ui-text-muted); font-size: 12px; }
+.menu .option > svg { flex: none; color: var(--ui-accent); }
+.menu .option:hover, .menu .option[aria-selected="true"] { background: var(--ui-accent-soft); }
+.menu .option:disabled, .menu .action:disabled { opacity: .5; cursor: default; }
+.picker .trigger:focus-visible, .menu .option:focus-visible, .menu .action:focus-visible, .advanced > summary:focus-visible, .advanced input:focus-visible { outline: 2px solid var(--ui-focus); outline-offset: 1px; }
+.menu .hint { margin: 8px; color: var(--ui-text-muted); font-size: 12px; line-height: 1.6; }
+.menu .notice { margin: 8px; color: var(--ui-text-secondary); font-size: 12px; line-height: 1.6; }
+.advanced { margin-top: 6px; border-top: 1px solid var(--ui-border); padding: 8px; }
+.advanced > summary { cursor: pointer; color: var(--ui-text-secondary); font-size: 12px; }
+.advanced form { display: flex; align-items: flex-end; gap: 7px; margin: 10px 0; }
+.advanced label { display: grid; gap: 5px; min-width: 0; flex: 1; color: var(--ui-text-secondary); font-size: 12px; }
+.advanced input { box-sizing: border-box; min-width: 0; width: 100%; min-height: 34px; border: 1px solid var(--ui-border); border-radius: 5px; background: var(--ui-surface); color: var(--ui-text); font: inherit; padding: 6px 8px; }
+.advancedActions { display: flex; flex-wrap: wrap; gap: 7px; }
+.menu .action { display: inline-flex; align-items: center; justify-content: center; flex: none; min-height: 34px; padding: 6px 9px; border: 1px solid var(--ui-border); border-radius: 5px; background: var(--ui-surface); color: var(--ui-text-secondary); font: inherit; font-size: 12px; cursor: pointer; }
+.menu .action:hover { background: var(--ui-surface-hover); color: var(--ui-text); }
+.advanced .hint { margin-inline: 0; }
+@media (pointer: coarse) { .picker .trigger, .menu .option, .menu .action, .advanced input { min-height: 42px; } .advanced > summary { min-height: 40px; display: list-item; align-content: center; } }

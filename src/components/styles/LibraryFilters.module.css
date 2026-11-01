@@ -1,0 +1,73 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.root { position: relative; flex-shrink: 0; }
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 7px 11px;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+  background: var(--ui-surface);
+  color: var(--ui-text-secondary);
+  cursor: pointer;
+  font-size: 13px;
+  list-style: none;
+  user-select: none;
+}
+.trigger::-webkit-details-marker { display: none; }
+.trigger:hover { background: var(--ui-surface-subtle); }
+.trigger:focus-visible { outline: 2px solid var(--ui-focus); outline-offset: 3px; }
+.root[open] .trigger { color: var(--ui-accent); border-color: var(--ui-accent); }
+.count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 4px;
+  background: var(--ui-accent-soft);
+  color: var(--ui-accent);
+  font-size: 12px;
+}
+.panel {
+  position: absolute;
+  z-index: 25;
+  top: calc(100% + 8px);
+  left: 0;
+  width: min(300px, calc(100vw - 112px));
+  padding: 16px;
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+  background: var(--ui-surface);
+  box-shadow: 0 8px 24px #20273514;
+}
+.panelHeading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.panelHeading strong { font-size: 13px; font-weight: 600; }
+:global(.kb-shell) .panelHeading button { border: 0; padding: 3px; color: var(--ui-accent); background: transparent; font-size: 12px; }
+.panel > label { display: flex; flex-direction: column; gap: 7px; margin-top: 14px; font-size: 12px; color: var(--ui-text-secondary); }
+.panel select { width: 100%; font-size: 13px; }
+.panel > .check { flex-direction: row; align-items: center; gap: 8px; margin-bottom: 2px; cursor: pointer; }
+.conditions { display: flex; flex: 1; min-width: 0; gap: 6px; flex-wrap: wrap; }
+:global(.kb-shell) .conditions button {
+  max-width: 100%;
+  border: 0;
+  background: var(--ui-accent-soft);
+  color: var(--ui-accent);
+  font-size: 12px;
+  padding: 5px 8px;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+.conditions svg { flex-shrink: 0; }
+:global(.kb-shell) .sort { margin-left: auto; min-height: 36px; max-width: 156px; padding: 7px 11px; color: var(--ui-text-secondary); font-size: 13px; }
+@media (max-width: 650px) {
+  .toolbar { gap: 8px; }
+  .conditions:not(:empty) { order: 3; flex-basis: 100%; }
+}

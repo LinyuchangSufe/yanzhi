@@ -1,0 +1,841 @@
+.reader {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
+  height: 100%;
+  min-width: 0;
+  background: #f0f1f4;
+  color: var(--ui-text);
+  overflow: hidden;
+}
+.overlay button.citationHotspot {
+  position: absolute;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  font-size: 0;
+  line-height: 0;
+  border: 0;
+  border-bottom: 1px dotted #527ea6;
+  background: transparent;
+  /* Pointer input stays on PDF.js text so dragging and Cmd+C still work. */
+  pointer-events: none;
+}
+.overlay button.citationHotspot:focus-visible {
+  outline: 2px solid var(--ui-focus);
+  outline-offset: 2px;
+  background: #77a8e426;
+}
+.referencePreview {
+  position: absolute;
+  z-index: 45;
+  top: 52px;
+  right: 12px;
+  width: min(390px, calc(100% - 24px));
+  max-height: calc(100% - 72px);
+  overflow: auto;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  box-shadow: 0 8px 28px #1c253026;
+  font-size: 12px;
+}
+.referenceHeader,
+.referenceActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.referenceHeader {
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.reader .referenceHeader button,
+.reader .referenceActions button {
+  flex: none;
+  border: 1px solid var(--ui-border);
+  border-radius: 5px;
+  padding: 5px 8px;
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  cursor: pointer;
+  font: inherit;
+}
+.reader .referenceHeader button {
+  border: 0;
+  font-size: 16px;
+}
+.reader .referenceHeader button:focus-visible,
+.reader .referenceActions button:focus-visible {
+  outline: 2px solid var(--ui-focus);
+}
+.referenceCrop {
+  overflow: hidden;
+  background: white;
+  border-radius: 4px;
+}
+.referenceCrop canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.referenceText {
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  user-select: text;
+  margin: 10px 0;
+}
+.referenceStatus {
+  color: var(--ui-text-muted);
+  line-height: 1.5;
+}
+.referenceActions {
+  flex-wrap: wrap;
+}
+.referenceActions span {
+  color: var(--ui-text-muted);
+  font-size: 11px;
+}
+.referenceCandidates {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 174px;
+  overflow-y: auto;
+  margin: 10px 0;
+}
+.reader .referenceCandidates button {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--ui-border);
+  border-radius: 6px;
+  background: var(--ui-surface);
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+.reader .referenceCandidates button[aria-pressed="true"] {
+  border-color: var(--ui-accent);
+  background: var(--ui-accent-soft);
+}
+.reader .referenceCandidates button:focus-visible {
+  outline: 2px solid var(--ui-focus);
+}
+.referenceCandidates button span:first-child {
+  font-size: 11px;
+  color: var(--ui-text-muted);
+}
+.referenceCandidates button span:last-child {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+.referenceSelectedPage {
+  font-size: 11px;
+  color: var(--ui-text-muted);
+  margin: 10px 0 6px;
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-height: 42px;
+  padding: 5px 8px;
+  box-sizing: border-box;
+  background: var(--ui-surface);
+  border-bottom: 1px solid var(--ui-border);
+  font-size: 13px;
+  min-width: 0;
+}
+.toolbar button,
+.toolbar select,
+.toolbar input,
+.morePanel button,
+.morePanel select,
+.draft button,
+.draft select,
+.empty button {
+  font: inherit;
+  border: 1px solid var(--ui-border);
+  background: var(--ui-surface);
+  color: inherit;
+  border-radius: 5px;
+  padding: 5px 8px;
+  min-height: 30px;
+}
+.toolbar button,
+.morePanel button,
+.draft button,
+.empty button {
+  cursor: pointer;
+}
+.toolbar button:disabled,
+.morePanel button:disabled,
+.draft button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.toolbar button[aria-pressed="true"] {
+  color: var(--ui-accent);
+  background: var(--ui-accent-soft);
+}
+.toolbar button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  min-height: 34px;
+  border-color: transparent;
+  background: transparent;
+  padding: 4px;
+}
+.toolbar button:hover:not(:disabled) {
+  background: var(--ui-surface-hover);
+}
+.toolbar button.labeledTool {
+  width: auto;
+  gap: 4px;
+  padding-inline: 6px;
+  white-space: nowrap;
+}
+.secondaryTools {
+  display: flex;
+  flex: none;
+  order: 2;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  padding-left: 4px;
+  border-left: 1px solid var(--ui-border);
+}
+.moreToggle {
+  order: 4;
+  margin-left: auto;
+}
+.toolbar button:focus-visible,
+.toolbar select:focus-visible,
+.toolbar input:focus-visible,
+.morePanel button:focus-visible,
+.morePanel select:focus-visible,
+.morePanel a:focus-visible {
+  outline: 2px solid var(--ui-focus);
+  outline-offset: -1px;
+}
+.pageControls,
+.pageCounter,
+.modeControls,
+.zoomControls {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: 2px;
+}
+.toolbar .pageCounter {
+  gap: 5px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.toolbar input {
+  width: 40px;
+  min-height: 27px;
+  padding: 3px 2px;
+  text-align: center;
+  appearance: textfield;
+  border-color: transparent;
+  background: transparent;
+}
+.toolbar input:focus {
+  background: var(--ui-surface);
+  border-color: var(--ui-border);
+}
+.toolbar input::-webkit-inner-spin-button,
+.toolbar input::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+.toolbar select {
+  max-width: 110px;
+  padding: 3px 4px;
+  min-height: 29px;
+  border-color: transparent;
+  background-color: transparent;
+}
+.toolbar .zoomSelect {
+  width: 94px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.zoomControls {
+  order: 1;
+  margin-left: 0;
+}
+.outlineControl {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 62px;
+  height: 32px;
+  flex: none;
+  color: var(--ui-text-secondary);
+}
+.outlineControl select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.outlineControl:focus-within,
+.outlineControl:hover {
+  background: var(--ui-surface-hover);
+  border-radius: 5px;
+}
+.outlineControl:focus-within {
+  outline: 2px solid var(--ui-focus);
+  outline-offset: -1px;
+}
+.filename {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: var(--ui-text-secondary);
+  font-size: 12px;
+}
+.hint {
+  color: var(--ui-text-muted);
+  font-size: 12px;
+}
+.stage {
+  position: relative;
+  overflow: auto;
+  flex: 1;
+  min-height: 80px;
+  padding: 16px;
+  overflow-anchor: none;
+}
+.pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-width: 100%;
+}
+.page {
+  position: relative;
+  flex: none;
+  background: var(--ui-surface);
+  box-shadow: 0 2px 10px #2026321a;
+  --scale-round-x: 1px;
+  --scale-round-y: 1px;
+}
+.page[data-pdf-rendered="false"] .canvas,
+.page[data-pdf-rendered="false"] .text {
+  visibility: hidden;
+}
+.pagePlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--ui-text-muted);
+  font-size: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.pagePlaceholder strong {
+  font-size: 14px;
+}
+.pagePlaceholder button {
+  border: 1px solid var(--ui-border);
+  background: white;
+  padding: 7px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.controls {
+  flex: none;
+  position: relative;
+  z-index: 10;
+  container-type: inline-size;
+  container-name: pdf-controls;
+}
+.outlineControl {
+  anchor-name: --kb-pdf-outline;
+}
+.toolHint {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: max-content;
+  max-width: min(240px, calc(100% - 20px));
+  padding: 9px 12px;
+  border-radius: 7px;
+  background: var(--ui-text);
+  color: var(--ui-surface);
+  box-shadow: 0 4px 14px #2026321a;
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.12s,
+    visibility 0s 0.12s;
+}
+.toolHint strong,
+.toolHint span {
+  display: block;
+}
+.toolHint strong {
+  font-weight: 600;
+}
+.toolHint span {
+  color: #d9dee8;
+  font-size: 12px;
+}
+.controls[data-hints-dismissed="false"][data-hint-input="pointer"]:has(
+    .outlineControl:hover
+  )
+  .outlineHint,
+.controls[data-hints-dismissed="false"][data-hint-input="keyboard"]:has(
+    .outlineControl select:focus-visible
+  )
+  .outlineHint,
+.controls[data-hints-dismissed="false"][data-hint-input="pointer"]
+  .toolHint:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0.18s;
+}
+.controls[data-hints-dismissed="true"] .toolHint {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: none;
+}
+@supports (left: anchor(center)) {
+  .outlineHint {
+    position-anchor: --kb-pdf-outline;
+    left: anchor(center);
+  }
+}
+.morePanel {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 8px;
+  width: min(320px, calc(100% - 16px));
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid var(--ui-border);
+  border-radius: 9px;
+  background: var(--ui-surface);
+  box-shadow: 0 7px 24px #2026321a;
+  font-size: 13px;
+  max-height: min(520px, calc(100dvh - 180px));
+  overflow-y: auto;
+}
+.moreHeading,
+.moreActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.moreHeading {
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.moreHeading button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  width: 34px;
+  padding: 3px;
+  border: 0;
+  background: transparent;
+}
+.attachmentLabel {
+  display: grid;
+  gap: 6px;
+  color: var(--ui-text-secondary);
+}
+.attachmentLabel select {
+  width: 100%;
+  min-width: 0;
+}
+.moreActions {
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.moreActions a,
+.moreActions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  min-height: 34px;
+  box-sizing: border-box;
+  border: 1px solid var(--ui-border);
+  border-radius: 5px;
+  background: var(--ui-surface-subtle);
+  color: var(--ui-accent);
+  text-decoration: none;
+  font: inherit;
+}
+.morePanel .hint {
+  margin: 12px 0 0;
+  line-height: 1.6;
+}
+@container pdf-controls (min-width: 750px) {
+  .toolbar {
+    flex-wrap: nowrap;
+  }
+  .secondaryTools {
+    order: 3;
+    flex: 0 0 auto;
+    padding-top: 0;
+    border-top: 0;
+    padding-left: 4px;
+    border-left: 1px solid var(--ui-border);
+  }
+}
+@container pdf-controls (max-width: 369px) {
+  .toolbar {
+    gap: 4px;
+  }
+}
+@media (pointer: coarse) {
+  .toolbar button, .toolbar select, .toolbar input, .morePanel button, .morePanel select, .morePanel a { min-height: 44px; height: auto; }
+  .toolbar button { min-width: 44px; }
+}
+.error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.error button {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 16px;
+}
+.canvas {
+  display: block;
+}
+.text {
+  z-index: 2;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.highlightPaint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+/* One opacity group per color composites once even when excerpts overlap. */
+.personalInk,
+.draftInk {
+  opacity: 0.15;
+}
+.guideInk {
+  opacity: 0.12;
+}
+.targetInk {
+  opacity: 0.12;
+}
+.overlay button.mark {
+  position: absolute;
+  display: block;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  min-width: 0;
+  border-radius: 1px;
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: 0;
+  line-height: 0;
+  box-sizing: border-box;
+  box-shadow: none;
+  appearance: none;
+}
+.overlay button.mark:hover {
+  background: transparent;
+  outline: 1px solid #4b725b70;
+  outline-offset: 1px;
+}
+.overlay button.regionMark,
+.overlay button.mark.regionMark:hover {
+  background: transparent;
+  opacity: 1;
+  border: 2px solid var(--mark-color, #bd8e20);
+}
+.overlay button.guideMark {
+  position: absolute;
+  display: block;
+  border: 0;
+  border-radius: 1px;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  min-width: 0;
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: 0;
+  line-height: 0;
+  box-sizing: border-box;
+  box-shadow: none;
+  appearance: none;
+}
+.overlay button.guideMark:hover,
+.overlay button.guideMark:focus-visible,
+.overlay button.guideMark.activeGuideMark {
+  background: transparent;
+  outline: 1px solid #a47e2e70;
+  outline-offset: 1px;
+}
+.guideBadge {
+  position: absolute;
+  left: var(--guide-badge-offset, -17px);
+  top: -1px;
+  padding: 1px 3px;
+  border-radius: 3px;
+  background: #f1ead4;
+  color: #8c722e;
+  font:
+    600 8px/1.3 system-ui,
+    sans-serif;
+  pointer-events: none;
+}
+.overlay button.activeGuideMark .guideBadge,
+.overlay button.guideMark:hover .guideBadge {
+  background: #927b39;
+  color: var(--ui-surface);
+}
+.regionMode .overlay button.guideMark {
+  pointer-events: none;
+}
+.overlay button.activeMark {
+  outline: 1px solid #2c694a90;
+  outline-offset: 1px;
+}
+.overlay button.regionMark.activeMark {
+  opacity: 1;
+  box-shadow: 0 0 0 3px #45896850;
+}
+.overlay button.draftMark {
+  background: transparent;
+  pointer-events: none;
+}
+.overlay button.targetMark {
+  pointer-events: none;
+  outline: 1px solid #386bb080;
+  outline-offset: 1px;
+  background: transparent;
+  animation: locate 1s ease 3;
+}
+.regionMode {
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+.regionMode .text {
+  pointer-events: none;
+}
+.regionMode .overlay button.mark {
+  pointer-events: none;
+}
+.drawingRegion {
+  position: absolute;
+  border: 2px dashed #3d7856;
+  background: #78ae8c30;
+  pointer-events: none;
+}
+.status {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--ui-surface);
+  width: max-content;
+  margin: 0 auto 10px;
+  padding: 8px 14px;
+  border-radius: 5px;
+  color: var(--ui-text-secondary);
+  font-size: 12px;
+}
+.empty {
+  padding: 45px 20px;
+  text-align: center;
+  margin: auto;
+  max-width: 460px;
+  color: var(--ui-text-secondary);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.empty strong {
+  display: block;
+  font-size: 15px;
+  color: var(--ui-text);
+}
+.error {
+  margin: 0;
+  padding: 8px 12px;
+  color: #a13e2c;
+  background: #fcf0eb;
+  font-size: 12px;
+}
+.draft {
+  flex: 0 1 auto;
+  min-height: 0;
+  padding: 12px;
+  border-top: 1px solid var(--ui-border);
+  background: var(--ui-surface);
+  font-size: 12px;
+  max-height: 45%;
+  overflow: auto;
+}
+.selectionTools {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 6px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--ui-border);
+  background: var(--ui-surface);
+  font-size: 12px;
+  overflow-x: auto;
+}
+.selectionTools span {
+  margin-right: auto;
+  color: var(--ui-text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.selectionTools button {
+  border: 1px solid var(--ui-border);
+  border-radius: 5px;
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  padding: 5px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.selectionTools button:first-of-type {
+  color: var(--ui-accent);
+  background: var(--ui-accent-soft);
+}
+.selectionTools button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.draft > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.draft > div strong {
+  margin-right: auto;
+}
+.draftSegments {
+  margin: 8px 0;
+}
+.draftSegments summary {
+  cursor: pointer;
+  color: var(--ui-text-secondary);
+}
+.draftSegments ol {
+  margin: 6px 0;
+  padding-left: 24px;
+  max-height: 140px;
+  overflow: auto;
+}
+.draft blockquote {
+  margin: 9px 0;
+  padding: 7px 10px;
+  border-left: 3px solid var(--ui-border);
+  max-height: 80px;
+  overflow: auto;
+  color: var(--ui-text-secondary);
+  line-height: 1.5;
+}
+.draft label {
+  display: block;
+}
+.draft textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 55px;
+  border: 1px solid var(--ui-border);
+  border-radius: 5px;
+  padding: 8px;
+  margin: 5px 0 8px;
+  font: inherit;
+  background: var(--ui-surface);
+  color: var(--ui-text);
+}
+.draft button[type="submit"] {
+  background: var(--ui-accent);
+  color: var(--ui-surface);
+  margin-left: auto;
+}
+@keyframes locate {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .overlay button.targetMark {
+    animation: none;
+  }
+  .stage {
+    scroll-behavior: auto;
+  }
+}

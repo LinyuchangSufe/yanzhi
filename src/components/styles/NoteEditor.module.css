@@ -1,0 +1,402 @@
+.noteEditor {
+  padding: 10px 14px 24px;
+}
+
+.assistContainer {
+  container-type: inline-size;
+  container-name: note-editor;
+}
+
+.editorTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  margin-bottom: 10px;
+}
+
+.shortcutHints {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 14px;
+  margin-bottom: 18px;
+  color: var(--ui-text-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.shortcutHints span {
+  white-space: nowrap;
+}
+
+.shortcutHints kbd {
+  font: inherit;
+  color: var(--ui-text-secondary);
+}
+
+.insertTools {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.noteEditor .insertTools button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 36px;
+  height: 34px;
+  min-height: 34px;
+  padding: 5px 7px;
+  font-size: 12px;
+  border: 0;
+  color: var(--ui-text-secondary);
+  background: transparent;
+}
+
+.noteEditor .insertTools button:hover {
+  background: var(--ui-surface-hover);
+  color: var(--ui-accent);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.noteEditor .assistToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 34px;
+  border: 0;
+  padding: 4px 7px;
+  color: var(--ui-text-secondary);
+  background: transparent;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.noteEditor .assistToggle[aria-expanded="true"] {
+  border-radius: 5px;
+  color: var(--ui-accent);
+  background: var(--ui-accent-soft);
+}
+
+.assistLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 26px;
+}
+
+.writingPane {
+  min-width: 0;
+}
+
+@container note-editor (min-width: 800px) {
+  .assistLayout {
+    grid-template-columns: minmax(0, 1fr) minmax(350px, 0.86fr);
+  }
+}
+
+.uploadStatus,
+.uploadError {
+  margin-bottom: 12px;
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.uploadStatus {
+  color: var(--ui-text-secondary);
+  background: var(--ui-surface-subtle);
+}
+
+.uploadError {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  color: #92553f;
+  background: #fff5ef;
+}
+
+.uploadError span {
+  overflow-wrap: anywhere;
+}
+
+.noteEditor .uploadError button {
+  min-height: 25px;
+  padding: 2px 5px;
+  border: 0;
+  background: transparent;
+  color: #85543e;
+  text-decoration: underline;
+  font-size: 11px;
+}
+
+.codeEditor :global(.paper-completion) {
+  max-width: min(500px, calc(100vw - 48px));
+  border: 1px solid var(--ui-border);
+  border-radius: 7px;
+  overflow: hidden;
+  background: var(--ui-surface);
+  box-shadow: 0 7px 25px #20263214;
+  color: var(--ui-text);
+}
+
+.codeEditor :global(.paper-completion ul) {
+  max-width: 100%;
+  max-height: 270px;
+}
+
+.codeEditor :global(.paper-completion li) {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  white-space: normal;
+  line-height: 1.4;
+  font-size: 12px;
+}
+
+.codeEditor :global(.paper-completion .cm-completionLabel) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.codeEditor :global(.paper-completion .cm-completionDetail) {
+  margin: 0;
+  color: var(--ui-text-secondary);
+  font-size: 10px;
+  font-style: normal;
+}
+
+.codeEditor :global(.paper-completion li[aria-selected="true"]) {
+  background: var(--ui-accent-soft);
+  color: var(--ui-accent);
+}
+
+.segmented {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border: 0;
+  border-radius: 5px;
+  padding: 0;
+  background: transparent;
+}
+
+.noteEditor .segmented button {
+  min-height: 34px;
+  border: 0;
+  background: transparent;
+  padding: 4px 8px;
+  color: var(--ui-text-muted);
+  font-size: 13px;
+}
+
+.noteEditor .segmented button[aria-pressed="true"] {
+  background: var(--ui-surface-hover);
+  color: var(--ui-accent);
+}
+
+.saveStatus,
+.errorText {
+  margin-left: auto;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.saveStatus {
+  color: var(--ui-text-muted);
+}
+
+.errorText {
+  color: #a15d47;
+}
+
+.noteEditor .toolsToggle {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 0;
+  padding: 4px;
+  background: transparent;
+  color: var(--ui-text-secondary);
+}
+
+.noteEditor .toolsToggle[aria-expanded="true"] {
+  background: var(--ui-surface-hover);
+}
+
+.noteSettings {
+  margin-bottom: 18px;
+  border: 1px solid var(--ui-border);
+  border-radius: 7px;
+  padding: 12px;
+  background: var(--ui-surface-subtle);
+}
+
+.noteEditor .noteTitle {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  padding: 6px 0;
+  margin: 0 0 16px;
+  background: transparent;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.editorTools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px 12px;
+  margin: 0;
+}
+
+.noteEditor .editorTools button,
+.noteEditor .editorTools a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  border-radius: 4px;
+  padding: 4px 0;
+  background: transparent;
+  color: var(--ui-text-secondary);
+  text-decoration: none;
+  min-height: 32px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.noteEditor .editorTools button:hover,
+.noteEditor .editorTools a:hover {
+  color: var(--ui-accent);
+  background: transparent;
+}
+
+.noteEditor .formatHint {
+  margin: 10px 0 0;
+  color: var(--ui-text-muted);
+  font-size: 12px;
+}
+
+.noteEditor button[aria-label="独立窗口编辑"] {
+  width: auto;
+  height: 34px;
+  gap: 5px;
+  padding: 5px 7px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.editorTools kbd { font: inherit; color: var(--ui-text-muted); margin-left: 4px; }
+
+.codeEditor {
+  border: 0;
+  padding-top: 0;
+  min-height: 340px;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.codeEditor :global(.cm-editor) {
+  background: transparent;
+}
+
+.codeEditor :global(.cm-content) {
+  padding: 5px 0 36px;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+}
+
+.codeEditor :global(.cm-focused) {
+  outline: none;
+}
+
+.codeEditor :global(.cm-scroller) {
+  overflow: auto;
+}
+
+.preview {
+  min-height: 340px;
+  padding-top: 3px;
+  line-height: 1.9;
+}
+
+.noteEditor.compact {
+  padding: 8px 12px 16px;
+}
+
+.compact .editorTop {
+  gap: 6px;
+  min-height: 34px;
+  margin-bottom: 10px;
+}
+
+.compact .editorTop button {
+  min-width: 34px;
+  min-height: 34px;
+  height: 34px;
+  padding: 5px 7px;
+  font-size: 13px;
+}
+
+.compact .editorTop svg {
+  width: 16px;
+  height: 16px;
+}
+
+.compact .toolsToggle {
+  width: 34px;
+  padding: 4px;
+}
+
+.compact .saveStatus,
+.compact .errorText {
+  font-size: 12px;
+}
+
+.compact .preview {
+  padding-top: 0;
+}
+
+.compact .preview > div > :first-child {
+  margin-top: 0;
+}
+
+.compact .noteTitle {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.insertMenu { position: relative; }
+.noteEditor .insertMenu > button { display: inline-flex; align-items: center; gap: 5px; min-height: 34px; padding: 5px 7px; border: 0; background: transparent; color: var(--ui-text-secondary); font-size: 13px; }
+.noteEditor .insertMenu > button[aria-expanded="true"] { color: var(--ui-accent); background: var(--ui-accent-soft); }
+.insertDropdown { position: absolute; top: calc(100% + 5px); left: 0; z-index: 45; width: min(270px, calc(100vw - 44px)); display: grid; gap: 3px; padding: 6px; border: 1px solid var(--ui-border); border-radius: 7px; background: var(--ui-surface); box-shadow: 0 6px 22px #16243b20; }
+.noteEditor .insertDropdown button { display: flex; width: 100%; align-items: center; justify-content: flex-start; gap: 8px; min-height: 36px; height: auto; border: 0; padding: 6px 9px; background: transparent; color: var(--ui-text-secondary); font-size: 13px; }
+.noteEditor .insertDropdown button:hover { background: var(--ui-surface-hover); color: var(--ui-text); }
+.insertDropdown kbd { margin-left: auto; font: inherit; color: var(--ui-text-muted); font-size: 12px; }
+.titleSetting { display: grid; gap: 6px; color: var(--ui-text-secondary); font-size: 13px; }
+.noteEditor .noteSettings .noteTitle { margin-bottom: 9px; font-size: 15px; border-bottom: 1px solid var(--ui-border); }
+
+@media (pointer: coarse) {
+  .noteEditor .editorTop button, .compact .editorTop button, .noteEditor .insertDropdown button, .noteEditor .editorTools button { min-height: 44px; height: auto; }
+}
+
+@media (max-width: 700px) {
+  .noteEditor {
+    padding: 10px 16px 24px;
+  }
+}

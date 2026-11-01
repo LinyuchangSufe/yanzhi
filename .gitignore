@@ -1,0 +1,22 @@
+node_modules/
+.next/
+.next */
+data/
+restored-*/
+test-results/
+*.tsbuildinfo
+.env
+.env.local
+.env.*
+!.env.example
+.DS_Store
+*.log
+*.sqlite*
+*.db
+*.kb.json.gz
+coverage/
+dist/
+public/pdf/
+public/pdf */
+**/* [2-9].ts
+**/* [2-9].tsx

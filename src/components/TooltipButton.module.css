@@ -1,0 +1,20 @@
+.tooltip {
+  position: fixed;
+  left: var(--tooltip-left, 8px);
+  top: var(--tooltip-top, 8px);
+  z-index: 10000;
+  width: max-content;
+  max-width: min(300px, calc(100vw - 16px));
+  padding: 7px 10px;
+  border-radius: 6px;
+  color: #fff;
+  background: #242424;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 16%);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.tooltip[data-positioned="true"] { visibility: visible; }
